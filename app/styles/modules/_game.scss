@@ -1,0 +1,237 @@
+/**
+  * what: top brand
+  * why: prominant display for the user
+  */
+.brand {
+  font-size: 3em;
+  margin-top: 0; //reset h2
+  text-align: center;
+  text-shadow: 0 -1px $color-black-transparent-70,
+  0 -2px $color-black-transparent-70; //embedded effect
+}
+
+/**
+  * what: the game board, it's shutter block that asks for user inputs
+  * why: show / hide based on status of the game
+  */
+.game {
+  margin: 0 auto; //center align
+  position: relative; //parent for shutter that is absolutely positioned
+}
+
+//to rotate the game block group
+//to simulate a fan spin effect
+.fins {
+  margin: 0 auto;
+  &.rotate {
+    transform: rotate(360deg);
+    transition: transform 1s cubic-bezier(.74, .1, .21, .97);
+  }
+}
+
+/**
+  * what: game buttons / blocks and their relative styles when won/lost/tie
+  * why: clear indication to the user asking for inputs and feedback on game (won/lost/tie)
+  */
+button.keypad {
+  display: inline-block;
+  background: $color-shadow;
+  padding: 0;
+  border: 0;
+  width: 130px;
+  border-radius: 3px;
+  height: 130px;
+  margin: 10px;
+  outline: none;
+  box-shadow: 0 0 6px 3px $color-black-transparent-70;
+  box-sizing: border-box;
+  &#a {
+    background: $color-block-a;
+    //border-radius: 175px 3px 3px 3px;
+    &:active,&.js-active{
+      transition: background 150ms ease;
+      background: $color-block-a-light;
+    }
+  }
+  &#b {
+    background: $color-block-b;
+    //border-radius: 3px 175px 3px 3px;
+    &:active,&.js-active{
+      transition: background 150ms ease;
+      background: $color-block-b-light;
+    }
+  }
+  &#c {
+    background: $color-block-c;
+    //border-radius: 3px 3px 3px 175px;
+    &:active,&.js-active{
+      transition: background 150ms ease;
+      background: $color-block-c-light;
+    }
+  }
+  &#d {
+    background: $color-block-d;
+    //border-radius: 3px 3px 175px 3px;
+    &:active, &.js-active {
+      transition: background 150ms ease;
+      background: $color-block-d-light;
+    }
+  }
+
+}
+
+.dashboard {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2em;
+  color: $color-white-transparent-70;
+  margin-top: 10px;
+  button {
+    font-size: 1em;
+    border: 0;
+    border-radius: 3px;
+    background: $color-shadow;
+    color: $color-white-transparent-70;
+    box-shadow: 0 0 8px 4px $color-black-transparent-70;
+    padding: 10px;
+    width: 80px;
+  }
+}
+
+#counter {
+  position: absolute;
+  background: $color-counter-default;
+  background-image: linear-gradient(to top, $color-counter-default, $color-white);
+  top: 75px;
+  left: 75px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  line-height: .7em;
+  font-size: 1em;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h2{
+    //margin: 30px 15px;
+    margin: 0;
+    display: inline-block;
+    line-height: .8em;
+    text-align: center;
+    color: $color-counter-font;
+  }
+
+  &.won{
+    background-color: $color-counter-success;
+    background-image: linear-gradient(to top,
+      darken($color-counter-success, 10%) 70%,
+      lighten($color-counter-success, 10%));
+    h2 {
+      color: $color-white-transparent-70;
+    }
+  }
+  &.error{
+    background-color: $color-counter-error;
+    background-image: linear-gradient(to top,
+      darken($color-counter-error, 10%) 70%,
+      lighten($color-counter-error, 10%));
+    h2 {
+      color: $color-white-transparent-70;
+    }
+  }
+}
+
+.strict{
+  display: flex;
+  width: 100px;
+  align-items: center;
+
+  >span{ margin-right: auto;}
+  .toggle{
+    font-size: .7em;
+    display: inline-block;
+    span{
+      padding: 5px 3px;
+      display: inline-block;
+      transition: color 300ms ease, background 300ms ease;
+      cursor: pointer;
+      border: 1px solid $color-white-transparent-70;
+      width: 2em;
+      &:nth-of-type(odd){
+        border-radius: 3px 0 0 3px;
+      }
+      &:nth-of-type(even){
+        border-radius: 0 3px 3px 0;
+      }
+    }
+    &.on{
+      .on{
+        background: $color-white-transparent-70;
+        color: $color-shadow;
+        transition: color 300ms ease, background 300ms ease;
+      }
+      .off{
+        color: $color-shadow;
+        background: $color-shadow;
+        transition: color 300ms ease, background 300ms ease;
+      }
+    }
+    &.off{
+      .on{
+        background: $color-shadow;
+        color: $color-shadow;
+        transition: color 300ms ease, background 300ms ease;
+      }
+      .off{
+        transition: color 300ms ease, background 300ms ease;
+      }
+    }
+  }
+}
+
+//help panel for the user
+.info_panel{
+  padding: 1em;
+  border: 1px solid $color-white-transparent-70;
+  border-radius: 5px;
+  background: $color-background;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  margin: 5px;
+  &.is-displayed{
+    display: block;
+  }
+  &.is-hidden{
+    display: none;
+  }
+  .close{ //close x button
+    float: right;
+    color: $color-white-transparent-70;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.8em;
+    margin-top: -15px;
+    margin-right: -15px;
+  }
+  .message{ //user info
+    margin: 0;
+    margin-top: 5px;
+    font-size: 1.3em;
+  }
+  ul{ //keybindings
+    padding: 0; //clear default 40px padding
+    list-style: none;
+    font-size: .9em;
+    pre{
+      margin: 0; //reset defaults
+      margin-bottom: 5px;
+    }
+  }
+}
