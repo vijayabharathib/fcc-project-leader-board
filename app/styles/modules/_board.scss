@@ -10,6 +10,11 @@
   0 -2px $color-black-transparent-70; //embedded effect
 }
 
+.subtitle{
+  text-align: center;
+  margin: -10px auto 20px;
+  color: $color-user-name;
+}
 button {
   border: none;
   padding: 10px;
