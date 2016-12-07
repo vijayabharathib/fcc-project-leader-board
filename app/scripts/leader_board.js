@@ -6,19 +6,28 @@
   */
 var LeaderBoard=(function(){
 
-  function getLeaderDetails(url){
+  /**
+    * request for leader details on the url supplied
+    * on successful result, render the board
+    */
+  function getLeaderDetails(url,root){
     var xhr = new XMLHttpRequest();
     xhr.onload=function(e){
-      _renderBoard(JSON.parse(e.target.responseText));
+      _renderBoard(JSON.parse(e.target.responseText),root);
     };
     xhr.open('GET',url,true);
     xhr.send();
   }
 
-  function _renderBoard(leaders){
-    ReactDOM.render(React.createElement(Board,{leaders: leaders}),document.querySelector(".results"));
+  function _renderBoard(leaders,root){
+    //render the virtual DOM based on board
+    ReactDOM.render(React.createElement(Board,{leaders: leaders}),root);
   }
 
+  /**
+    * leader component for the board
+    * props are supplied by the calling Board class
+    */
   var Leader = React.createClass({
     render: function(){
       var leaderElement=React.createElement
@@ -31,6 +40,10 @@ var LeaderBoard=(function(){
     }
   });
 
+  /**
+    * root level board element
+    * all the leaders from the ajax request are added as child components
+    */
   var Board = React.createClass({
     render: function(){
       var leaders=this.props.leaders.slice(0,10);
@@ -46,12 +59,16 @@ var LeaderBoard=(function(){
         React.createElement('div',{className: 'c-camper__header__user'},"Camper"),
         React.createElement('div',{className: 'c-camper__header__brownie'},"Brownies")
         );
+      //insert a header for the component,
+      // this should be the first child of the board
       leaderList.unshift(header);
       return React.createElement('ul',null,leaderList);
     }
   });
 
   return {
+    //module reveal pattern:
+    //reveal only getLeaderDetails as public access 
     getLeaderDetails: getLeaderDetails
   };
 })();

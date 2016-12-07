@@ -15,18 +15,19 @@ button {
   padding: 10px;
   font-size: 1.2em;
   width: 50%;
-  color: $color-white-transparent-70;
+  color: $color-white; //fall back
+  color: $color-white-transparent-70; //progressive enhancement
 }
 
 .lastThirtyDaysLeaders {
-  background-color: $color-score-recent;
+  background-color: $color-score-recent; //fall back
   background-image: linear-gradient(to bottom,
     $color-score-recent,
     darken($color-score-recent, 10%));
 }
 
 .allTimeLeaders {
-  background-color: $color-score-alltime;
+  background-color: $color-score-alltime; //fall back
   background-image: linear-gradient(to bottom,
     $color-score-alltime,
     darken($color-score-alltime, 10%));
@@ -66,7 +67,7 @@ ul{
     margin-right: 10px;
     border-radius: 50%;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: middle; //this is important to align text and image in the middle
   }
 
   .c-camper__name {
