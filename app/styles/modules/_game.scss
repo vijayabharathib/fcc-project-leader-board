@@ -10,32 +10,80 @@
   0 -2px $color-black-transparent-70; //embedded effect
 }
 
+button {
+  border: none;
+  padding: 10px;
+  font-size: 1.2em;
+  width: 50%;
+  color: $color-white-transparent-70;
+}
+
+.lastThirtyDaysLeaders {
+  background-color: $color-score-recent;
+  background-image: linear-gradient(to bottom,
+    $color-score-recent,
+    darken($color-score-recent, 10%));
+}
+
+.allTimeLeaders {
+  background-color: $color-score-alltime;
+  background-image: linear-gradient(to bottom,
+    $color-score-alltime,
+    darken($color-score-alltime, 10%));
+}
+
 ul{
   list-style: none;
   padding: 5px;
   margin: 0;
+
   .o-camper{
     padding: 0;
     margin-bottom: 10px;
+    height: 45px;
+  }
+  .o-camper__header{
+    font-size: 1.2em;
+  }
+  .c-camper__header__user{
+    display: inline-block;
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .c-camper__header__brownie{
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
   .c-camper__image{
     width: 15%;
     margin-right: 10px;
-    border-radius: 3px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   .c-camper__name {
     width: 50%;
     display: inline-block;
+    color: $color-user-name;
   }
 
   .c-camper__score--recent{
     width: 15%;
     display: inline-block;
+    color: $color-score-recent;
   }
+
   .c-camper__score--alltime{
     width: 15%;
     display: inline-block;
+    color: $color-score-alltime;
   }
 }

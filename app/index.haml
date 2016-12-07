@@ -7,18 +7,19 @@
   <meta name="keywords" content="game, simon,1980">
 
   <link rel="stylesheet" href="public/styles/main.css?v=02" type="text/css" />
-  <link rel="icon" type="image/png" href="./favicon.png?v=01" sizes="128x128">
+  <link rel="icon" type="image/png" href="./favicon.png?v=03" sizes="128x128">
 </head>
   <body>
     %div.container
       %h1.brand Leader Board
-      %div#board
+      %div.board
         %div.filter
-          %button#lastThirtyDaysLeaders Last 30 days
-          %button#allTimeLeaders All time leaders
-        %div#results
+          %button.lastThirtyDaysLeaders Last 30 days
+          %button.allTimeLeaders All time leaders
+        %div.results
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="public/scripts/leader_board.js?v=00"></script>
     <script src="public/scripts/mvc.js?v=02"></script>
   </body>
 </html>
